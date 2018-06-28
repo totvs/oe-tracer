@@ -32,4 +32,12 @@ Some statements are ignored because is not used to calculate missing test covera
 * NodeTypes.FUNCTION
 * NodeTypes.CLASS
 * NodeTypes.CONSTRUCTOR
-
+## Running Plug-in
+This oe-coverage plug-in is a CLI application. This application can be used with ant builders or maven tasks.
+```
+Tracer <base-dir> <source> <propath> <schema> <output.xml>
+```
+* "base-dir" (mandatory): project base directory.
+* "source" (mandatory): source file or directory of ABL projects.
+* "schema" (mandatory): database schema required for parsing ABL sources. Schema can be generated from OpenEdge Database using [this toolset](https://github.com/devtotvs/oe-proparse/blob/master/prorefactor/configdump/configdump.p).
+* "sonar-output" (mandatory): Sonar's XML generic test
