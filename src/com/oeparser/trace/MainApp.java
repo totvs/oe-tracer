@@ -15,7 +15,7 @@ public class MainApp {
 			File basedir = new File(args[0]);
 			
 			String source  = args[1];
-			String propath = args[2];  
+			String propath = args[2].replaceAll(";", ",");
 			
 			File schema = new File(args[3]);
 			File output = new File(args[4]);
