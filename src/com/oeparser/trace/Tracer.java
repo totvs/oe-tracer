@@ -30,7 +30,10 @@ public class Tracer {
 	
 	private static final String   PROJECT_NAME   = "default";
 	private static final String[] EXTENSIONS     = new String[] { "p", "py", "w", "cls" };
-	private static final int[]    NON_EXECUTABLE = new int[] { NodeTypes.USING, NodeTypes.DEFINE, NodeTypes.DO, NodeTypes.PROCEDURE, NodeTypes.PERIOD, NodeTypes.REPEAT, NodeTypes.METHOD, NodeTypes.FUNCTION, NodeTypes.CLASS, NodeTypes.CONSTRUCTOR };
+	private static final int[]    NON_EXECUTABLE = new int[] { NodeTypes.USING, NodeTypes.DEFINE, 
+			NodeTypes.DO, NodeTypes.PROCEDURE, NodeTypes.PERIOD, NodeTypes.REPEAT, NodeTypes.METHOD, 
+			NodeTypes.FUNCTION, NodeTypes.CLASS, NodeTypes.CONSTRUCTOR, NodeTypes.INTERFACE,
+			NodeTypes.CATCH, NodeTypes.FINALLY, NodeTypes.DESTRUCTOR, NodeTypes.BLOCKLEVEL};
 	
 	private int errors  = 0;
 	private int success = 0;
@@ -88,6 +91,18 @@ public class Tracer {
         }
         
         file.delete();
+	}
+	
+	private void log(String msg) {
+		BufferedWriter log;
+		try {
+			log = new BufferedWriter(new FileWriter(new File("./prorefactor/oeTrace.log"), true));
+			log.write(msg + "\n");
+			log.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void run() throws Exception {
